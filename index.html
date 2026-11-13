@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bouncer</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --gold: #ffd93d; --ink: #f3efe7; --muted: #b9b6c8; --line: #2c2b45; --bg: #0b0b1a; --card: #16152b; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  header { background: var(--card); border-bottom: 1px solid var(--line); padding: 18px 20px; font-size: 22px; font-weight: 800; letter-spacing: 3px; color: var(--gold); }
+  main { max-width: 460px; margin: 0 auto; padding: 24px 16px 40px; }
+  .logo { display: block; width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 16px; background: var(--card); border: 2px solid var(--gold); position: relative; }
+  .logo::before { content: ""; position: absolute; left: 40px; top: 30px; width: 18px; height: 18px; border-radius: 50%; background: #fff; }
+  .logo::after { content: ""; position: absolute; left: 22px; bottom: 18px; width: 52px; height: 8px; border-radius: 4px; background: #e8e8f0; }
+  h1 { font-size: 24px; text-align: center; }
+  .lead { color: var(--muted); text-align: center; margin: 6px 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
+  .card.primary { border-color: var(--gold); }
+  h2 { font-size: 17px; margin-bottom: 4px; }
+  .card p { color: var(--muted); font-size: 15px; }
+  .btn { display: block; text-align: center; text-decoration: none; background: var(--gold); color: var(--bg); font-weight: 700; padding: 13px; border-radius: 10px; margin-top: 12px; }
+  .btn.alt { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+  ol { color: var(--muted); font-size: 15px; padding-left: 20px; margin-top: 10px; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 18px; }
+</style>
+</head>
+<body>
+<header>BOUNCER</header>
+<main>
+  <div class="logo" aria-hidden="true"></div>
+  <h1>Install Bouncer</h1>
+  <p class="lead">Flutter project by Ali Alsaffar</p>
+
+  <section class="card" id="android">
+    <h2>Android</h2>
+    <p>Download the game and install it on your phone. Tilt the phone to move the tile.</p>
+    <a class="btn" href="bouncer.apk" download>Download for Android (44 MB)</a>
+    <ol>
+      <li>Open the downloaded file.</li>
+      <li>If asked, allow installing from this source.</li>
+      <li>Tap Install, then Open.</li>
+    </ol>
+  </section>
+
+  <section class="card" id="ios">
+    <h2>iPhone</h2>
+    <p>iPhone apps can't be installed from a web page, so this opens the same game in Safari. The browser may not pass the tilt to the game, so you can also drag the tile with your finger. On a computer, use the arrow keys.</p>
+    <a class="btn alt" href="app/">Open Bouncer in the browser</a>
+    <ol>
+      <li>Tap Share in Safari.</li>
+      <li>Tap Add to Home Screen to keep it as an icon.</li>
+    </ol>
+  </section>
+
+  <footer>Source code is in the private Gitea repo aalsaffar/bouncer.</footer>
+</main>
+<script>
+  // Show the visitor's own platform first.
+  var ua = navigator.userAgent;
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var first = document.getElementById(isIos ? 'ios' : 'android');
+  first.classList.add('primary');
+  first.parentNode.insertBefore(first, document.querySelector('.card'));
+</script>
+</body>
+</html>
